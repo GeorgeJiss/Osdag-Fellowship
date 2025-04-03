@@ -48,3 +48,11 @@ To verify the correctness of the design:
 pytest -v test_unit.py
 ```
 
+
+## Report
+
+Link for the overleaf latex report of the whole screening task:
+
+```sh
+https://www.overleaf.com/read/rvhnnqnsfkfr#d6621b
+```
