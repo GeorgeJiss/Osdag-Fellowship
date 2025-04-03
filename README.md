@@ -4,6 +4,11 @@
 
 This repository contains Python modules for designing bolted lap joints and performing unit tests to validate the design.
 
+## Objective
+
+The primary goal of this repository is to develop a comprehensive and precise unit test for the bolted lap joint design module, as part of the Osdag Fellowship screening task. The test is designed to be both concise and robust, ensuring thorough validation of all specified prompts.
+
+
 ## Project Structure
 
 ```
