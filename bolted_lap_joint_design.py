@@ -11,6 +11,35 @@ def design_lap_joint(P, w, t1, t2):
     :return: Dictionary of design parameters and results
     """
 
+    # Input validation
+    if P < 0:
+        raise ValueError("Tensile force cannot be negative")
+    if w <= 0:
+        raise ValueError("Width must be positive")
+    if t1 <= 0 or t2 <= 0:
+        raise ValueError("Thickness must be positive")
+    
+        # Handle zero load case specially
+    if P == 0:
+        # Return a minimum design with 2 bolts for zero load
+        return {
+            "bolt_diameter": 10,  # Minimum bolt diameter
+            "bolt_grade": 3.6,    # Minimum bolt grade
+            "number_of_bolts": 2,  # Minimum number of bolts
+            "pitch_distance": 20,  # Standard pitch
+            "gauge_distance": w / 2,
+            "end_distance": 15,
+            "edge_distance": 15,
+            "number_of_rows": 1,
+            "number_of_columns": 2,
+            "hole_diameter": 12,
+            "strength_of_connection": 0,  # Zero load requires zero strength
+            "yield_strength_plate_1": 250,
+            "yield_strength_plate_2": 250,
+            "length_of_connection": w + 2 * 15,
+            "efficiency_of_connection": 0.0  # Zero load means zero utilization
+        }
+
     # Convert tensile force to Newtons
     P_N = P * 1000
 
@@ -99,7 +128,8 @@ def calculate_bolt_strength(bolt_grade):
     :return: List containing [ultimate tensile strength, yield strength] of the bolt
     """
     bolt_fu = float(int(bolt_grade) * 100)  # Ultimate tensile strength (MPa)
-    bolt_fy = float((bolt_grade - int(bolt_grade)) * bolt_fu)  # Yield strength (MPa)
+    # bolt_fy = float((bolt_grade - int(bolt_grade)) * bolt_fu)  # Yield strength (MPa)
+    bolt_fy = float(int((bolt_grade - int(bolt_grade)) * 10) / 10 * bolt_fu)  # Fix floating point issue
     return [bolt_fu, bolt_fy]
 
 

@@ -1,3 +1,4 @@
+import pytest
 from bolted_lap_joint_design import design_lap_joint
 
 def test_minimum_bolts():
