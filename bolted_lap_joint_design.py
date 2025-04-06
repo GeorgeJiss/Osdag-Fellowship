@@ -129,7 +129,7 @@ def calculate_bolt_strength(bolt_grade):
     """
     bolt_fu = float(int(bolt_grade) * 100)  # Ultimate tensile strength (MPa)
     # bolt_fy = float((bolt_grade - int(bolt_grade)) * bolt_fu)  # Yield strength (MPa)
-    bolt_fy = float(int((bolt_grade - int(bolt_grade)) * 10) / 10 * bolt_fu)  # Fix floating point issue
+    bolt_fy = float(int((bolt_grade - int(bolt_grade)) * 10) / 10 * bolt_fu)  # Fixed floating point issue
     return [bolt_fu, bolt_fy]
 
 
